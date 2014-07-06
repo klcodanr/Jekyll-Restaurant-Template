@@ -1,0 +1,21 @@
+{% for group in site.pages %}
+	{% if group.layout == 'menu_group' %}
+		<h2>{{ group.title }}</h2>
+		<p>
+			{{ group.summary }}
+		</p>
+		<ul>
+			<li>
+				{% for item in site.pages %}
+					{% if item.layout == 'menu_item' and item.menu_group == group.id %}
+						<h5>{{ item.title }}</h5>
+						<p>
+							{{ item.price }}<br/>
+							{{ item.summary }}
+						</p>
+					{% endif %}
+				{% endfor %}
+			</li>
+		</ul>
+	{% endif %}
+{% endfor %}

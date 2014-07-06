@@ -1,0 +1,19 @@
+---
+layout: default
+---
+
+<h2>{{ page.title }}</h2>
+<p>
+	{{ content }}
+</p>
+<ul>
+	{% for item in site.pages %}
+		{% if item.layout == 'menu_item' and item.menu_group == page.id %}
+			<li>
+				<a href="{{ item.url }}">
+					{{ item.title }}
+				</a>
+			</li>
+		{% endif %}
+	{% endfor %}
+</ul>
