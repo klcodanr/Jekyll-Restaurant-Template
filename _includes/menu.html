@@ -1,21 +1,17 @@
 {% for group in site.pages %}
 	{% if group.layout == 'menu_group' %}
-		<h2>{{ group.title }}</h2>
-		<p>
-			{{ group.summary }}
-		</p>
-		<ul>
-			<li>
+		<div class="row menu_group">
+			<h2>{{ group.title }}</h2>
+			<p>
+				{{ group.summary }}
+			</p>
+			<div class="menu_items">
 				{% for item in site.pages %}
 					{% if item.layout == 'menu_item' and item.menu_group == group.id %}
-						<h5>{{ item.title }}</h5>
-						<p>
-							{{ item.price }}<br/>
-							{{ item.summary }}
-						</p>
+						{% include menu_item.html %}
 					{% endif %}
 				{% endfor %}
-			</li>
-		</ul>
+			</div>
+		</div>
 	{% endif %}
 {% endfor %}
